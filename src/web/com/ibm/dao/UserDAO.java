@@ -27,7 +27,7 @@ public class UserDAO
 		
 		/*Driver driver=new oracle.jdbc.driver.OracleDriver();
 		DriverManager.registerDriver(driver);
-		*/return DriverManager.getConnection("jdbc:mysql://localhost:3306/trains","root","root");		
+		*/return DriverManager.getConnection("jdbc:mysql://mysql:3306/sampledb","user8ON","nQNaARi8ss6fTdhm");		
 	}
 
 	public boolean insertUser(User user) throws RegistrationException{
