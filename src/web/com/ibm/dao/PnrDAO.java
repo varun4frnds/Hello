@@ -24,7 +24,7 @@ public class PnrDAO {
 		/*Driver driver=new oracle.jdbc.driver.OracleDriver();
 		DriverManager.registerDriver(driver);
 		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE","system","root");	*/	
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/sonoo","root","root");
+		return DriverManager.getConnection("jdbc:mysql://mysql:3306/sampledb","user8ON","nQNaARi8ss6fTdhm");
 	}
 	public boolean insertPnr(String username,String pnr,Double price,String date) {
 		boolean flag=false;	
