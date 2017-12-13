@@ -110,7 +110,11 @@ public class DownloadTicket extends HttpServlet {
 			
 	        String stamp= Card.retpnr;
 	        System.out.println(stamp);
-	        BufferedWriter bwr=new BufferedWriter(new FileWriter(new File("D:", stamp + ".txt")));
+			String home = System.getProperty("user.home");
+	        
+	        BufferedWriter bwr=new BufferedWriter(new FileWriter(new File(home+"/Downloads/", stamp + ".txt")));
+	        
+	        
 	        bwr.write(sbf.toString());
 	        bwr.flush();
 	        bwr.close();
