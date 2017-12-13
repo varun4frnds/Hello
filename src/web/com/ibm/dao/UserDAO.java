@@ -35,7 +35,7 @@ public class UserDAO
 		try
 		{
 			Connection con=createConnection();
-			String queryString="insert into regd_users values(?,?,?)";
+			String queryString="insert into REGD_USERS values(?,?,?)";
 		
 		    PreparedStatement prepStatement=con.prepareStatement(queryString);
 		    prepStatement.setString(1,user.getUsername());
@@ -64,18 +64,18 @@ public class UserDAO
 			try
 			{
 				Connection con=createConnection();
-				String queryString="select * from  regd_users  where username=? ";
+				String queryString="select * from  REGD_USERS  where USERNAME=? ";
 			
 			    PreparedStatement prepStatement=con.prepareStatement(queryString);
 			    prepStatement.setString(1, username);
 			    ResultSet rs=prepStatement.executeQuery();
 			    if(rs.next())
 			    {
-			    	String name=rs.getString("username");
+			    	String name=rs.getString(1);
 			    	u.setUsername(name);
-			        String pass=rs.getString("password");
+			        String pass=rs.getString(2);
 			        u.setPassword(pass);
-			    	String email=rs.getString("emailid");
+			    	String email=rs.getString(3);
 			        u.setEmailid(email);
                     return u;
 			    }
