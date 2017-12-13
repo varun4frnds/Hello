@@ -51,7 +51,7 @@ public class TrainDAO {
 		{
 	        
 			Connection con=createConnection();
-			String queryString="select * from Trains where train_no=?";
+			String queryString="select * from TRAINS where TRAIN_NO=?";
 			PreparedStatement ps=con.prepareStatement(queryString);
 			ps.setInt(1, no);
 		    ResultSet rs=ps.executeQuery();
@@ -95,7 +95,7 @@ public boolean UpdateTrain(Train t)
 				
 			
 				Connection con=createConnection();
-				String queryString="update trains set source=? , destination=? , ticket_price=?, train_name=? where train_no=?";
+				String queryString="update TRAINS set SOURCE=? , DESTINATION=? , TICKET_PRICE=?, TRAIN_NAME=? where TRAIN_NO=?";
 			
 			    PreparedStatement prepStatement=con.prepareStatement(queryString);
 		        prepStatement.setString(4,t.getTrainName());
@@ -125,7 +125,7 @@ public boolean UpdateTrain(Train t)
 				
 			
 				Connection con=createConnection();
-				String queryString="insert into trains values(?,?,?,?,?)";
+				String queryString="insert into TRAINS values(?,?,?,?,?)";
 			
 			    PreparedStatement prepStatement=con.prepareStatement(queryString);
 		        prepStatement.setInt(1,t.getTrainNo());
@@ -156,7 +156,7 @@ public boolean UpdateTrain(Train t)
 		{
 		boolean flag=false;
 		Connection con=createConnection();
-		String queryString="select * from Trains where source=? AND destination=?";
+		String queryString="select * from TRAINS where SOURCE=? AND DESTINATION=?";
 		PreparedStatement ps=con.prepareStatement(queryString);
 		ps.setString(1,source);
 		ps.setString(2,destination);
@@ -165,10 +165,10 @@ public boolean UpdateTrain(Train t)
 	    {
 	    Train tr1=new Train();
 	    tr1.setTrainNo(rs.getInt(1));
-	    tr1.setTrainName(rs.getString("train_name"));
-	    tr1.setSource(rs.getString("source"));
-	    tr1.setDestination(rs.getString("destination"));
-	    tr1.setTicketPrice(rs.getInt("ticket_price"));
+	    tr1.setTrainName(rs.getString(2));
+	    tr1.setSource(rs.getString(3));
+	    tr1.setDestination(rs.getString(4));
+	    tr1.setTicketPrice(rs.getInt(5));
 	    
 	    mytrains.add(tr1);
 	    }
@@ -187,7 +187,7 @@ public boolean UpdateTrain(Train t)
 			
 		
 			Connection con=createConnection();
-			String queryString="delete trains where train_no=?";
+			String queryString="delete TRAINS where TRAIN_NO=?";
 		
 		    PreparedStatement prepStatement=con.prepareStatement(queryString);
 	        prepStatement.setInt(1,t);
@@ -217,14 +217,14 @@ public boolean UpdateTrain(Train t)
 		{
 	        
 			Connection con=createConnection();
-			String queryString="select distinct source from trains";
+			String queryString="select distinct SOURCE from TRAINS";
 			PreparedStatement ps=con.prepareStatement(queryString);
 			
 		    rs=ps.executeQuery();
 		    while(rs.next())
 		    {
 		    	Train tr1=new Train();
-		    	tr1.setSource(rs.getString("source"));
+		    	tr1.setSource(rs.getString("SOURCE"));
 		    	
 		        sourcers.add(tr1);
 		    }
@@ -253,14 +253,14 @@ public boolean UpdateTrain(Train t)
 		{
 	        
 			Connection con=createConnection();
-			String queryString="select distinct destination from trains";
+			String queryString="select distinct DESTINATION from TRAINS";
 			PreparedStatement ps=con.prepareStatement(queryString);
 			
 		    rs=ps.executeQuery();
 		    while(rs.next())
 		    {
 		    	Train tr2=new Train();
-		    	tr2.setDestination(rs.getString("destination"));
+		    	tr2.setDestination(rs.getString("DESTINATION"));
 		    	System.out.println(tr2.getDestination());
 		    	destinationrs.add(tr2);
 		    }
@@ -285,7 +285,7 @@ public boolean UpdateTrain(Train t)
 		{
 	        
 			Connection con=createConnection();
-			String queryString="select * from trains";
+			String queryString="select * from TRAINS";
 			PreparedStatement ps=con.prepareStatement(queryString);
 			
 		    rs=ps.executeQuery();
